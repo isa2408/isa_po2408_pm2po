@@ -2,4 +2,4 @@ fastapi
 Jinja2
 uvicorn
 psycopg2
-import sqlite3
+pyTelegramBotAPI    
