@@ -47,7 +47,7 @@ def show_cart(message):
 def start(message):
     bot.send_message(
         message.chat.id,
-        "Привет! Я Telegram-бот\nНапиши что-нибудь "
+        "чо хотел?"
     )
 
 
@@ -77,15 +77,19 @@ def show_gender_catalog(message):
         return
 
     text = "🛍 Товары:\n\n"
-    for name, price, gender, style in items:
+    for name, price, gender, style, image in items:
+        medias = [telebot.types.InputMediaPhoto(image)]
         text += (
             f"👕 {name}\n"
             f"💰 {price}\n"
             f"🎨 {style}\n"
+            f" {gender}\n"
+            f"{image}\n"
             "────────────\n"
         )
-
+        # bot.send_media_group(message.chat.id, medias)
     bot.send_message(message.chat.id, text)
+    
 
 @bot.message_handler(commands=['style'])
 def style_search(message):
